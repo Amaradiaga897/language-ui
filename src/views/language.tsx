@@ -8,11 +8,15 @@ import Card from "../components/card";
 import {ILanguage} from "../interfaces/language";
 
 import {getLanguages} from "../services/languages";
+import {getOneCategoryWLanguages} from "../services/categories"
+import {useParams} from "react-router-dom";
+
 
 const Language: React.FC = () => { 
 
     const [languages,setLanguages] = useState([]);
     const [update,setUpdate] = useState(true);
+    const {id} = useParams();
 
     useEffect(()=>{
         if(update){
@@ -23,12 +27,13 @@ const Language: React.FC = () => {
         }      
     },[update]);
 
+
     useEffect(() => {
         return () => {
           console.log("cleaned up");
         };
       }, []);
-
+if(!id){
     return(
         <div>
             <Header></Header>
@@ -56,6 +61,28 @@ const Language: React.FC = () => {
             <Footer></Footer>
         </div>
     );
+ } else{
+    return(
+        <div>
+            <Header></Header>
+            <div className="container">
+                <Subheader title={id} ></Subheader>
+                <div className="row text-center">
+                    {languages.map((lan: ILanguage,index) => (
+                        <Card 
+                            title={lan.name} 
+                            description={lan.description} 
+                            key={lan._id} 
+                            category={lan.category[0].name}
+                            LanguageId={lan._id}
+                        />
+                    ))}
+                </div>
+            </div>
+            <Footer></Footer>
+        </div>
+    );
+ }
 
 }
 

@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from "react";
+import {Link} from "react-router-dom"
 
 import {getCategoriesWLanguages, deleteCategory} from "../services/categories";
 import Modal from "./modal";
@@ -87,7 +88,8 @@ const CategoryTable: React.FC = () => {
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Languages Setted</th>
-                        <th scope="col"></th>                
+                        <th scope="col"></th>   
+                        <th scope="col"></th>             
                     </tr>
                 </thead>
                 <tbody>
@@ -103,6 +105,11 @@ const CategoryTable: React.FC = () => {
                                 onClick={showModal} 
                                 id={data._id}
                                 >Delete</button>
+                            </td>
+                            <td>
+                                <li className="nav-item">
+                                   <Link className="nav-link" to={`/categories/${data._id}`}>GO</Link>
+                                 </li> 
                             </td>
                     </tr>
                     ))}

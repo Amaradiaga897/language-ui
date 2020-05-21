@@ -37,4 +37,3 @@ export function getLanguage(id:string): Promise<any>{
         .catch(error => resolve( {data: {successed:false}} ) );
     });
 }
-

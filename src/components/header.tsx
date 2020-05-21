@@ -1,10 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+
 const Header: React.FC = () => (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div className="container">
+          
         <Link className="nav-link" to="/languages" >Language Management</Link>
+        <Link className="nav-link" to="/categories/" >Language Management</Link>
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
